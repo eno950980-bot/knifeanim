@@ -22,7 +22,6 @@ public class KnifeAnimClient implements ClientModInitializer {
     public void onInitializeClient() {
         inspectKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.knifeanim.inspect",
-                InputConstants.Type.KEYSYM,
                 InputConstants.KEY_R,
                 KeyMapping.Category.register(Identifier.fromNamespaceAndPath("knifeanim", "main"))
         ));
