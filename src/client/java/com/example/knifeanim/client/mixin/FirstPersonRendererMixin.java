@@ -2,9 +2,10 @@ package com.example.knifeanim.client.mixin;
 
 import com.example.knifeanim.client.KnifeAnimClient;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.FirstPersonHandsAndItemsRenderer;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.state.level.FirstPersonHandsAndItemsRenderState;
+import net.minecraft.client.renderer.state.level.PlayerRenderState;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Matrix4f;
@@ -17,7 +18,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class FirstPersonRendererMixin {
 
     @Inject(method = "submitArmWithItem", at = @At("HEAD"))
-    private void knifeanim$applyInspect(AbstractClientPlayer player, float partialTick, float pitch,
+    private void knifeanim$applyInspect(PlayerRenderState playerState,
+                                        FirstPersonHandsAndItemsRenderState handsState,
+                                        float f1, float f2,
                                         InteractionHand hand, float swingProgress, ItemStack stack,
                                         float equipProgress, PoseStack poseStack,
                                         SubmitNodeCollector collector, int light, CallbackInfo ci) {
